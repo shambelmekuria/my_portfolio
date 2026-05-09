@@ -45,7 +45,7 @@ export default function Navbar() {
           })}
         </ul>
         <div className="hidden md:block">
-          <Button className="h-10 px-6 rounded-full">Get Started</Button>
+          <Button className="h-10 px-6 rounded-sm">Get Started</Button>
         </div>
         {/* Toggler */}
         <Button
@@ -104,7 +104,7 @@ export default function Navbar() {
                 );
               })}
               <li>
-                <Button className="rounded-full w-full" size={"lg"}>
+                <Button className="rounded-sm w-full" size={"lg"}>
                   Get Started
                 </Button>
               </li>
