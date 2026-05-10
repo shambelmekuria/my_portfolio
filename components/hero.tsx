@@ -3,10 +3,12 @@ import Section from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
-import { motion, stagger } from "motion/react";
+import { motion, stagger, Variants } from "motion/react";
+import Link from "next/link";
 
 export default function Hero() {
-  const container = {
+  const container: Variants = {
+    // Variants is Used For Type Support
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -16,12 +18,12 @@ export default function Hero() {
     },
   };
 
-  const items = {
+  const items: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4 },
+      transition: { duration: 0.4, ease: "easeOut" },
     },
   };
   return (
@@ -38,14 +40,12 @@ export default function Hero() {
         >
           <motion.h1
             variants={items}
-            transition={{ ease: "easeOut" }}
             className="text-4xl md:text-5xl lg:text-6xl mb-4 font-bold text-slate-800 leading-tight"
           >
             Hi, I am Shambel Mekuriya
           </motion.h1>
           <motion.p
             variants={items}
-            transition={{ ease: "easeOut" }}
             className="text-slate-600 text-base md:text-lg leading-relaxed mb-6"
           >
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat
@@ -54,15 +54,15 @@ export default function Hero() {
           </motion.p>
           <motion.div
             variants={items}
-            transition={{ ease: "easeOut" }}
             className="flex flex-col md:flex-row gap-6"
           >
-            <Button className="h-12 gap-2 py-3 px-6 rounded-md hover:bg-primary/90">
-              Contact Me <MoveRight />
+            <Button asChild={true} className="h-12 gap-2 py-3 px-6 rounded-md hover:bg-primary/90">
+              <Link href={"#project"}>View My Work <MoveRight /></Link>
             </Button>
-            <Button variant={"secondary"} className="h-12 py-3 px-6 rounded-md">
-              Download CV
+            <Button  asChild={true} variant={"outline"} className="h-12 py-3 px-6 rounded-md hover:bg-primary hover:text-white">
+             <Link href={"#"}> Get In Touch</Link>
             </Button>
+          
           </motion.div>
         </motion.div>
         <motion.div
