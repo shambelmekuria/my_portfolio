@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shambel Mekuria | Full-Stack Developer",
+  title: "Shambel Mekuriya | Full-Stack Developer",
   description:
     "Portfolio of Shambel Mekuria, a Full-Stack Developer specializing in modern web applications with Next.js, React, and Django.",
 };

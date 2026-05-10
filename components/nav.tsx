@@ -52,7 +52,7 @@ export default function Navbar() {
           variant={"ghost"}
           size={"icon-lg"}
           onClick={() => setOpen(!open)}
-          className="block md:hidden"
+          className="md:hidden"
         >
           <AnimatePresence mode="wait" initial={false}>
             {open ? (
