@@ -29,7 +29,7 @@ export default function Portfolio() {
           <Card className="pt-0">
             <CardContent className="px-0 relative aspect-video h-70">
               <Image
-                src={"/img/gallery-1.png"}
+                src={"/gallery-1.png"}
                 alt="Portfolio"
                 className="rounded-t-xl"
                 fill
