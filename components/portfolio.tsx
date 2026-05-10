@@ -27,12 +27,13 @@ export default function Portfolio() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           <Card className="pt-0">
-            <CardContent className="px-0 relative aspect-video h-70">
+            <CardContent className="px-0 relative aspect-video">
               <Image
-                src={"/gallery-1.png"}
+                src="/gallery-1.png"
                 alt="Portfolio"
                 className="rounded-t-xl"
-                fill
+                width={1280}
+                height={720}
               />
             </CardContent>
             <CardHeader>
