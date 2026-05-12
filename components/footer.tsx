@@ -64,7 +64,7 @@ export default function Footer() {
     },
   ];
   return (
-    <section className="bg-slate-700 text-slate-400 py-8 px-4 md:px-6 lg:px-8 relative bottom-0 w-full">
+    <section className="bg-slate-800 text-slate-400 py-12 px-4 md:px-6 lg:px-8 relative bottom-0 w-full">
       <div className="max-w-7xl mx-auto mb-8">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr]  gap-8">
           <div className="space-y-4">
