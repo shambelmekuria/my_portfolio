@@ -30,55 +30,66 @@ export default function Hero() {
     <Section
       size="lg"
       className="min-h-screen flex items-center justify-center"
+      container={false}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={container}
-          className="flex flex-col justify-center"
-        >
-          <motion.h1
-            variants={items}
-            className="text-4xl md:text-5xl lg:text-6xl mb-4 font-bold text-slate-800 leading-tight"
-          >
-            Hi, I am Shambel Mekuriya
-          </motion.h1>
-          <motion.p
-            variants={items}
-            className="text-slate-600 text-base md:text-lg leading-relaxed mb-6"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat
-            eius molestias omnis provident et earum est corrupti magni amet
-            similique.
-          </motion.p>
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-8 md:gap-16">
           <motion.div
-            variants={items}
-            className="flex flex-col md:flex-row gap-6"
+            initial="hidden"
+            animate="visible"
+            variants={container}
+            className="flex flex-col justify-center"
           >
-            <Button asChild={true} className="h-12 gap-2 py-3 px-6 rounded-md hover:bg-primary/90">
-              <Link href={"#project"}>View My Work <MoveRight /></Link>
-            </Button>
-            <Button  asChild={true} variant={"outline"} className="h-12 py-3 px-6 rounded-md hover:bg-primary hover:text-white">
-             <Link href={"#"}> Get In Touch</Link>
-            </Button>
-          
+            <motion.h1
+              variants={items}
+              className="text-4xl md:text-5xl lg:text-6xl mb-4 font-bold text-slate-800 leading-tight"
+            >
+              Hi, I am Shambel Mekuriya
+            </motion.h1>
+            <motion.p
+              variants={items}
+              className="text-slate-600 text-base md:text-lg leading-relaxed mb-6"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat
+              eius molestias omnis provident et earum est corrupti magni amet
+              similique.
+            </motion.p>
+            <motion.div
+              variants={items}
+              className="flex flex-col md:flex-row gap-6"
+            >
+              <Button
+                asChild={true}
+                className="h-12 gap-2 py-3 px-6 rounded-md hover:bg-primary/90"
+              >
+                <Link href={"#project"}>
+                  View My Work <MoveRight />
+                </Link>
+              </Button>
+              <Button
+                asChild={true}
+                variant={"outline"}
+                className="h-12 py-3 px-6 rounded-md hover:bg-primary hover:text-white"
+              >
+                <Link href={"#"}> Get In Touch</Link>
+              </Button>
+            </motion.div>
           </motion.div>
-        </motion.div>
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-        >
-          <Image
-            src={"/shambel.jpg"}
-            alt="profile image"
-            className="w-full md:w-96 md:h-96 rounded-md"
-            width={576}
-            height={576}
-            priority
-          />
-        </motion.div>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1}}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+          >
+            <Image
+              src={"/shambel.jpg"}
+              alt="profile image"
+              className="w-full h-auto overflow-hidden md:w-md md:h-md rounded-md"
+              width={600}
+              height={600}
+              priority
+            />
+          </motion.div>
+        </div>
       </div>
     </Section>
   );
