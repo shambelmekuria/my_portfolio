@@ -8,7 +8,7 @@ import { AnimatePresence, motion, useInView } from "motion/react";
 const menuItems = [
   {
     name: "Home",
-    link: "#",
+    link: "",
   },
   {
     name: "About",
@@ -30,9 +30,9 @@ const menuItems = [
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
- 
+
   return (
-    <header className="fixed w-full top-0  z-50 bg-slate-800 text-white">
+    <header className="fixed w-full top-0  z-50 bg-background text-foreground shadow-sm">
       <nav className="max-w-7xl mx-auto h-16 flex  items-center justify-between px-4">
         <div className="font-bold text-lg md:text-xl uppercase">Shambel</div>
         <ul className="hidden md:flex items-center gap-8">
@@ -45,7 +45,7 @@ export default function Navbar() {
           })}
         </ul>
         <div className="hidden md:block">
-          <Button className="h-10 px-6 rounded-sm">View My Work</Button>
+          <Button className="h-10 px-6 rounded-full">View My Work</Button>
         </div>
         {/* Toggler */}
         <Button
@@ -87,7 +87,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden md:hidden"
+            className="overflow-hidden md:hidden bg-muted text-muted-foreground"
           >
             <ul className="flex flex-col p-4 space-y-4">
               {menuItems.map((item) => {
@@ -96,7 +96,7 @@ export default function Navbar() {
                     <Link
                       href={item.link}
                       onClick={() => setOpen(false)}
-                      className="block text-slate-50"
+                      className="block "
                     >
                       {item.name}
                     </Link>

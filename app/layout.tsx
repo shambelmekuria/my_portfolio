@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Poppins, Space_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import ScrollTop from "@/components/scroll-top";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/providers/theme-provider";
+import ScrollTop from "@/components/common/scroll-top";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,11 +17,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
-const spaceGrotesk = Space_Grotesk({
- weight: [ "400","500", "600", "700"],
-  variable: "--font-space-grotesk",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const superMagicalFont = localFont({
+  variable: "--font-super-magical",
+  src: "./fonts/super-magical.ttf",
+  display: "swap",
+});
+
+const innerMountingFlame = localFont({
+  variable: "--font-inner-mounting-flame",
+  src: "./fonts/inner-mounting-flame.ttf",
   display: "swap",
 });
 
@@ -42,16 +52,24 @@ export default function RootLayout({
         "h-full",
         "antialiased",
         geistSans.variable,
-        geistMono.variable,
-        spaceGrotesk.variable,
-        "font-sans",
+        geistMono.variable, // ← was missing
         inter.variable,
+        superMagicalFont.variable,
+        innerMountingFlame.variable,
       )}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
-        {children}
-        <ScrollTop/>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster />
+          <ScrollTop />
+        </ThemeProvider>
       </body>
     </html>
   );

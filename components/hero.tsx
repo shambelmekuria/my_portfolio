@@ -42,7 +42,7 @@ export default function Hero() {
           >
             <motion.h1
               variants={items}
-              className="text-4xl md:text-5xl lg:text-6xl mb-4 font-bold text-slate-800 leading-tight"
+              className="text-4xl md:text-5xl lg:text-7xl mb-4 font-bold text-primary leading-tight font-super-magical"
             >
               Hi, I am Shambel Mekuriya
             </motion.h1>
@@ -60,7 +60,7 @@ export default function Hero() {
             >
               <Button
                 asChild={true}
-                className="h-12 gap-2 py-3 px-6 rounded-md hover:bg-primary/90"
+                className="h-12 gap-2 py-3 px-6 rounded-full hover:bg-primary/90"
               >
                 <Link href={"#project"}>
                   View My Work <MoveRight />
@@ -69,7 +69,7 @@ export default function Hero() {
               <Button
                 asChild={true}
                 variant={"outline"}
-                className="h-12 py-3 px-6 rounded-md hover:bg-primary hover:text-white"
+                className="h-12 py-3 px-6 rounded-full hover:bg-primary hover:text-white"
               >
                 <Link href={"#"}> Get In Touch</Link>
               </Button>
@@ -77,7 +77,7 @@ export default function Hero() {
           </motion.div>
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1}}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
           >
             <Image
