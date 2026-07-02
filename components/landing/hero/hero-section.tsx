@@ -4,10 +4,13 @@ import { ArrowRight, ChevronRight, EvCharger, Power } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
-import { AnimatedGroup } from "@/components/motion-primitives/animated-group";
+import {
+  AnimatedGroup,
+  AnimatedGroupProps,
+} from "@/components/motion-primitives/animated-group";
 import { Badge } from "@/components/ui/badge";
 import { HeroHeader } from "@/components/common/header";
-const transitionVariants = {
+const transitionVariants: AnimatedGroupProps["variants"] = {
   item: {
     hidden: {
       opacity: 0,
