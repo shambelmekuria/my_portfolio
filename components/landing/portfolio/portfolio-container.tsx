@@ -12,12 +12,7 @@ import { SectionHeader } from "@/components/section.header";
 
 export default function Portfolio() {
   return (
-    <Section
-      size={"lg"}
-      aria-label="portfolio"
-      id="project"
-      variant={"secondary"}
-    >
+    <Section size={"lg"} aria-label="portfolio" id="project" variant={"muted"}>
       <motion.div
         variants={container}
         initial="hidden"

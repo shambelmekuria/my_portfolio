@@ -1,94 +1,256 @@
-import React from "react";
+// import {
+//   Code2,
+//   Database,
+//   GraduationCap,
+//   ShieldCheck,
+//   Globe,
+// } from "lucide-react";
+
+// import Section from "../section";
+// import { SectionDescription, SectionHeader } from "../section.header";
+
+// import {
+//   Card,
+//   CardContent,
+//   CardDescription,
+//   CardHeader,
+//   CardTitle,
+// } from "../ui/card";
+
+// const services = [
+//   {
+//     title: "Web Development",
+//     description:
+//       "Building responsive, modern, and user-friendly websites and web applications using modern web technologies.",
+//     icon: Code2,
+//   },
+//   {
+//     title: "Digital Solutions",
+//     description:
+//       "Developing practical digital solutions that help individuals and organizations improve their online presence.",
+//     icon: Globe,
+//   },
+//   {
+//     title: "Database Management",
+//     description:
+//       "Designing and managing structured databases to organize, store, and maintain application data efficiently.",
+//     icon: Database,
+//   },
+//   {
+//     title: "Web Security",
+//     description:
+//       "Applying security best practices to help protect websites, applications, and user information.",
+//     icon: ShieldCheck,
+//   },
+//   {
+//     title: "IT Training",
+//     description:
+//       "Teaching web design and development fundamentals through practical, hands-on learning experiences.",
+//     icon: GraduationCap,
+//   },
+// ];
+
+// export default function ServiceSection() {
+//   return (
+//     <Section variant="muted">
+//       {/* Section Heading */}
+//       <div className="mx-auto mb-10 max-w-2xl space-y-4 text-center md:mb-14">
+//         <SectionHeader size="sm">My Services</SectionHeader>
+
+//         <SectionDescription>
+//           I provide web development, digital solutions, and technology training
+//           to help individuals and organizations achieve their goals.
+//         </SectionDescription>
+//       </div>
+
+//       {/* Services Grid */}
+//       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+//         {services.map(({ title, description, icon: Icon }) => (
+//           <Card
+//             key={title}
+//             className="group relative overflow-hidden rounded-xl border border-border/60 bg-card p-2 shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md"
+//           >
+//             {/* Hover Accent */}
+//             <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
+
+//             <CardContent className="pt-6">
+//               <div className="flex size-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+//                 <Icon size={28} strokeWidth={1.8} />
+//               </div>
+//             </CardContent>
+
+//             <CardHeader className="space-y-3">
+//               <CardTitle className="text-xl font-semibold tracking-tight">
+//                 {title}
+//               </CardTitle>
+
+//               <CardDescription className="text-sm leading-7">
+//                 {description}
+//               </CardDescription>
+//             </CardHeader>
+//           </Card>
+//         ))}
+//       </div>
+//     </Section>
+//   );
+// }
+
+import {
+  Code2,
+  Database,
+  GraduationCap,
+  Globe,
+  ShieldCheck,
+  type LucideIcon,
+} from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
 import Section from "../section";
 import { SectionDescription, SectionHeader } from "../section.header";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
-import { Button } from "../ui/button";
-import { Code2, MoveRight } from "lucide-react";
-import Link from "next/link";
-import { GiSecurityGate } from "react-icons/gi";
-import { BsVirus } from "react-icons/bs";
+
+import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
+
+/* -------------------------------------------------------------------------- */
+/*                                    Types                                   */
+/* -------------------------------------------------------------------------- */
+
+interface Service {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    Data                                    */
+/* -------------------------------------------------------------------------- */
+
+const services: readonly Service[] = [
+  {
+    title: "Web Development",
+    description:
+      "Building responsive, modern, and user-friendly websites and web applications using modern web technologies.",
+    icon: Code2,
+  },
+  {
+    title: "Digital Solutions",
+    description:
+      "Developing practical digital solutions that help individuals and organizations improve their online presence.",
+    icon: Globe,
+  },
+  {
+    title: "Database Management",
+    description:
+      "Designing and managing structured databases to organize, store, and maintain application data efficiently.",
+    icon: Database,
+  },
+  {
+    title: "Web Security",
+    description:
+      "Applying security best practices to help protect websites, applications, and user information.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "IT Training",
+    description:
+      "Teaching web design and development fundamentals through practical, hands-on learning experiences.",
+    icon: GraduationCap,
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/*                                   Helpers                                  */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Grid placement for a 3-per-row desktop layout that centers an incomplete
+ * last row (1 or 2 leftover items) using a 6-column grid, and lets an odd
+ * last item span the full width on the 2-column tablet layout.
+ */
+function getGridPlacement(index: number, total: number) {
+  const leftover = total % 3;
+  const isLast = index === total - 1;
+
+  return cn(
+    "lg:col-span-2",
+    total % 2 === 1 && isLast && "sm:max-lg:col-span-2",
+    leftover === 2 && index === total - 2 && "lg:col-start-2",
+    leftover === 1 && isLast && "lg:col-start-3",
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Component                                 */
+/* -------------------------------------------------------------------------- */
 
 export default function ServiceSection() {
   return (
-    <Section variant={"secondary"}>
-      <div className="max-w-xl mx-auto text-center mb-8 md:mb-12 space-y-6">
-        <h2 className="text-3xl font-bold text-neutral-800 dark:text-neutral-200"></h2>
-        <SectionHeader size={"sm"}> My Services</SectionHeader>
-        <SectionDescription>
-          I offer a range of services to help you build exceptional web
-          applications.
-        </SectionDescription>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-        <Card className="relative overflow-hidden group p-8 border border-transparent shadow-none rounded-xl transition-shadow duration-300 hover:border-primary hover:shadow-lg">
-          {/* <div className="h-1 bg-linear-to-r from-orange-400 to-indigo-600 absolute top-0 left-0 z-10 w-0 group-hover:w-full transition-all duration-500 ease-in-out" /> */}
-          <CardContent>
-            <div className="size-20 bg-orange-600 text-slate-50 rounded-full flex items-center justify-center">
-              <Code2 size={48} />
-            </div>
-          </CardContent>
-          <CardHeader>
-            <CardTitle className="text-xl mb-2">Digital Solutions</CardTitle>
-            <CardDescription className="text-base">
-              Enter your email below to login to your account Lorem ipsum dolor
-              sit amet consectetur, adipisicing elit.
-            </CardDescription>
-          </CardHeader>
-        </Card>
-        <Card className="relative overflow-hidden group p-8 border shadow-none rounded-xl">
-          <div className="h-1 bg-linear-to-r from-orange-400 to-indigo-600 absolute top-0 left-0 z-10 w-0 group-hover:w-full transition-all duration-500 ease-in-out" />
-          <CardContent>
-            <div className="size-20 bg-primary text-primary-foreground rounded-full flex items-center justify-center">
-              <BsVirus size={48} />
-            </div>
-          </CardContent>
-          <CardHeader>
-            <CardTitle className="text-xl">Secure Systems</CardTitle>
-            <CardDescription className="text-base">
-              Enter your email below to login to your account Lorem ipsum dolor
-              sit amet consectetur, adipisicing elit.
-            </CardDescription>
-          </CardHeader>
-        </Card>
-        <Card className="relative overflow-hidden group p-6 border shadow-none rounded-xl">
-          <div className="h-1 bg-linear-to-r from-orange-400 to-indigo-600 absolute top-0 left-0 z-10 w-0 group-hover:w-full transition-all duration-500 ease-in-out" />
-          <CardContent>
-            <div className="size-20 bg-orange-600 text-slate-50 rounded-full flex items-center justify-center">
-              <Code2 size={48} />
-            </div>
-          </CardContent>
-          <CardHeader>
-            <CardTitle className="text-xl">Digital Solutions</CardTitle>
-            <CardDescription className="text-base">
-              Enter your email below to login to your account Lorem ipsum dolor
-              sit amet consectetur, adipisicing elit.
-            </CardDescription>
-          </CardHeader>
-        </Card>
-        {/* <div className="relative bg-white rounded-lg overflow-hidden p-8 group hover:-translate-y-4 transition-all ease-in-out duration-300">
-          <div className="h-1 bg-linear-to-r from-orange-400 to-indigo-600 absolute top-0 left-0 z-10 w-0 group-hover:w-full transition-all duration-500 ease-in-out" />
-          <div className="size-20 bg-orange-600 text-slate-50 rounded-full flex items-center justify-center mb-8">
-            <Code2 size={48} />
-          </div>
+    <Section variant="muted" id="services" aria-labelledby="services-heading">
+      <header className="mx-auto mb-10 max-w-2xl space-y-4 text-center md:mb-14">
+        <SectionHeader id="services-heading" size="sm">
+          My Services
+        </SectionHeader>
 
-          <div className="mb-8 space-y-4">
-            <h3 className="text-lg font-medium text-slate-900">
-              Brand Development
-            </h3>
-            <p>
-              Pellentesque habitant morbi tristique senectus et netus et
-              malesuada fames ac turpis egestas. Vestibulum tortor quam.
-            </p>
-          </div>
-        </div> */}
-      </div>
+        <SectionDescription>
+          I provide web development, digital solutions, and technology training
+          to help individuals and organizations achieve their goals.
+        </SectionDescription>
+      </header>
+
+      <ul
+        role="list"
+        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-6 lg:gap-8"
+      >
+        {services.map(({ title, description, icon: Icon }, index) => (
+          <li key={title} className={getGridPlacement(index, services.length)}>
+            <Card
+              className={cn(
+                "group relative h-full overflow-hidden border-border/60 shadow-none",
+                "transition duration-300 motion-reduce:transition-none",
+                "hover:border-primary/40 hover:shadow-md motion-safe:hover:-translate-y-1",
+              )}
+            >
+              {/* Decorative hover accent */}
+              <div
+                aria-hidden="true"
+                className={cn(
+                  "pointer-events-none absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-primary",
+                  "transition-transform duration-300 motion-reduce:transition-none",
+                  "group-hover:scale-x-100",
+                )}
+              />
+
+              <CardHeader className="space-y-3">
+                <div
+                  className={cn(
+                    "mb-2 flex size-14 items-center justify-center rounded-xl bg-primary/10 text-primary",
+                    "transition-colors duration-300 motion-reduce:transition-none",
+                    "group-hover:bg-primary group-hover:text-primary-foreground",
+                  )}
+                >
+                  <Icon
+                    className="size-7"
+                    strokeWidth={1.8}
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <CardTitle
+                  role="heading"
+                  aria-level={3}
+                  className="text-xl font-semibold tracking-tight"
+                >
+                  {title}
+                </CardTitle>
+
+                <CardDescription className="leading-relaxed text-pretty">
+                  {description}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }
