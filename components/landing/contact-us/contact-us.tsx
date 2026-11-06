@@ -33,7 +33,7 @@ export function ContactUs() {
   ];
   return (
     <>
-      <Section variant="default" size="sm">
+      <Section variant="default" size="sm" id="contact-us">
         <div className="space-y-4 text-center mb-12">
           <h2 className="text-2xl sm:text-3xl font-bold">Contact Us</h2>
           <p className="text-neutral-500">
